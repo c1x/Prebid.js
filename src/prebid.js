@@ -841,4 +841,25 @@ $$PREBID_GLOBAL$$.buildMasterVideoTagFromAdserverTag = function (adserverTag, op
   return masterTag;
 };
 
+/**
+ * Get winning bids for all ad units on page
+ * @return {array} array containing an object for each winning bid
+ */
+$$PREBID_GLOBAL$$.getWinningBids = function () {
+  return getWinningBids();
+};
+
+/**
+ * Get winning bid for ad unit code
+ * @param {string} adUnitCode ad unit code
+ * @return {object} winning bid for ad unit code
+ */
+$$PREBID_GLOBAL$$.getWinningBidForAdUnit = function (adUnitCode) {
+  if (adUnitCode) {
+    return getWinningBids(adUnitCode);
+  } else {
+    utils.logMessage('getWinningBidForAdUnit requires an adUnitCode');
+  }
+};
+
 processQue();
